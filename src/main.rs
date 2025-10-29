@@ -14,7 +14,7 @@ fn main() -> ! {
     // 配置时钟
     let mut rcc = dp.RCC.constrain();
     let mut delay = cp.SYST.delay(&rcc.clocks);
-    // GPIOC 时钟开启
+    // GPIOB 时钟开启
     let mut gpiob = dp.GPIOB.split(&mut rcc);
 
     // PB5 连接板载 LED
