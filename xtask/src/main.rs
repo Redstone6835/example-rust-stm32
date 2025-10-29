@@ -25,7 +25,7 @@ fn main() {
         eprintln!("❌ 构建完成后未找到 ELF 文件: {:?}", built_file);
         exit(1);
     }
-    fs::copy(&built_file, &elf_file).expect("无法重命名 ELF 文件");
+    fs::rename(&built_file, &elf_file).expect("无法重命名 ELF 文件");
     println!("✅ ELF 文件生成: {:?}", elf_file);
 
     println!("📊 统计 Flash/RAM 使用情况 ...");
@@ -37,7 +37,7 @@ fn main() {
     let stdout = String::from_utf8_lossy(&output.stdout);
     println!("{}", stdout);
 
-    // 4️⃣ 模拟 CubeIDE 输出占用率
+    // 输出占用率
     // STM32F103ZET6: Flash 512KB, RAM 64KB
     const FLASH_TOTAL: f64 = 512.0 * 1024.0;
     const RAM_TOTAL: f64 = 64.0 * 1024.0;
