@@ -1,0 +1,33 @@
+{
+    "configurations": [
+    {
+        "name": "Build & Debug Microcontroller - OpenOCD",
+        "cwd": "${workspaceFolder}",
+        "type": "cortex-debug",
+        "request": "launch",
+        "executable": "${workspaceFolder}/target/thumbv7m-none-eabi/debug/${workspaceFolderBasename}.elf",
+        "servertype": "openocd",
+        "device": "STM32F103ZETx",
+        "interface": "swd",
+
+        "serverpath": "C:/Program Files/xpack-openocd/bin/openocd.exe",
+        "preLaunchTask": "Build ELF",
+        "configFiles": [
+            "interface/stlink.cfg",
+            "target/stm32f1x.cfg"
+        ],
+
+        "runToEntryPoint": "main",
+        "preLaunchCommands": [
+            "monitor reset halt",
+            "load"
+        ],
+        "postLaunchCommands": [
+            "monitor reset init"
+        ],
+
+        // "svdFile": "c:/ST/STM32CubeCLT_1.19.0/STMicroelectronics_CMSIS_SVD/STM32F103.svd",
+        "showDevDebugOutput": "raw",
+    },
+    ]
+}
